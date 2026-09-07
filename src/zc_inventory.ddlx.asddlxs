@@ -1,0 +1,86 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'InventoryID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'InventoryID'
+annotate view ZC_INVENTORY with
+{
+  @UI.hidden: true
+  @EndUserText.label: 'UUID'
+  @UI.identification: [ {
+    position: 10 ,
+    label: 'UUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 ,
+    label: 'UUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10
+  } ]
+  UUID;
+
+  @UI.facet: [ {
+    label: 'General Information',
+    id: 'GeneralInfo',
+    purpose: #STANDARD,
+    position: 20 ,
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.hidden: true
+  @EndUserText.label: 'ParentUUID'
+  @UI.identification: [ {
+    position: 20 ,
+    label: 'ParentUUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 ,
+    label: 'ParentUUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  ParentUUID;
+
+  @EndUserText.label: 'InventoryID'
+  @UI.identification: [ {
+    position: 30 ,
+    label: 'InventoryID'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 ,
+    label: 'InventoryID'
+  } ]
+  @UI.selectionField: [ {
+    position: 30
+  } ]
+  InventoryID;
+
+  @EndUserText.label: 'Warehouse'
+  @UI.identification: [ {
+    position: 40 ,
+    label: 'Warehouse'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 ,
+    label: 'Warehouse'
+  } ]
+  @UI.selectionField: [ {
+    position: 40
+  } ]
+  Warehouse;
+
+  @EndUserText.label: 'OnHand'
+  @UI.identification: [ {
+    position: 50 ,
+    label: 'OnHand'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 ,
+    label: 'OnHand'
+  } ]
+  @UI.selectionField: [ {
+    position: 50
+  } ]
+  OnHand;
+}

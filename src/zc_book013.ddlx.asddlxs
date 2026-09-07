@@ -1,0 +1,357 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Create Book',
+    typeNamePlural: 'Books'
+}
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'BookID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'BookID'
+annotate view ZC_BOOK013 with
+{
+
+  @UI.hidden: true
+  @EndUserText.label: 'UUID'
+  @UI.identification: [ {
+    position: 10 ,
+    label: 'UUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 ,
+    label: 'UUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10
+  } ]
+  UUID;
+
+  @UI.facet: [
+
+   {
+     id: 'BookOverview',
+     label: 'Book Overview',
+     type: #COLLECTION,
+     position: 20
+   },
+
+   {
+     id: 'GeneralInfo',
+     label: 'General Information',
+     purpose: #STANDARD,
+     type: #IDENTIFICATION_REFERENCE,
+     parentId: 'BookOverview',
+     position: 10
+   },
+
+   {
+     id: 'AIRecommendations',
+     label: '✨ AI Recommendations',
+     purpose: #STANDARD,
+     type: #IDENTIFICATION_REFERENCE,
+     targetQualifier: 'AIRecommendations',
+     position: 21
+   },
+
+   {
+     id: 'AuthorItems',
+     label: 'Author Items',
+     purpose: #STANDARD,
+     type: #LINEITEM_REFERENCE,
+     targetElement: '_Author',
+     position: 22
+   },
+
+   {
+     id: 'InventoryItems',
+     label: 'Inventory Items',
+     purpose: #STANDARD,
+     type: #IDENTIFICATION_REFERENCE,
+     targetElement: '_Inventory',
+     position: 23
+   }
+
+  ]
+  //
+  //  @UI.facet: [ {
+  //    label: 'General Information',
+  //    id: 'GeneralInfo',
+  //    purpose: #STANDARD,
+  //    position: 20 ,
+  //    type: #IDENTIFICATION_REFERENCE
+  //  },
+  //
+  //  {
+  //    label: 'Author Items',
+  //    id: 'AuthorItems',
+  //    purpose: #STANDARD,
+  //    position: 21 ,
+  //    type: #LINEITEM_REFERENCE,
+  //    targetElement: '_Author'
+  //  },
+  //  {
+  //    label: 'Inventory Items',
+  //    id: 'InventoryItems',
+  //    purpose: #STANDARD,
+  //    position: 22 ,
+  //    type: #IDENTIFICATION_REFERENCE,
+  //    targetElement: '_Inventory'
+  //  } ]
+
+  @EndUserText.label: 'BookID'
+
+  @UI.identification: [
+    {
+      type: #FOR_ACTION,
+      dataAction: 'getRecommendations',
+      label: '✨ Get Recommendations',
+      position: 10
+    },
+    {
+      position: 20,
+      label: 'Book ID'
+    }
+  ]
+
+    @UI.lineItem: [ {
+      position: 20,
+      label: 'BookID'
+    } ]
+
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+
+  BookID;
+
+  @EndUserText.label: 'Title'
+  @UI.identification: [ {
+    position: 30 ,
+    label: 'Title'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 ,
+    label: 'Title'
+  } ]
+  @UI.selectionField: [ {
+    position: 30
+  } ]
+  Title;
+
+  @EndUserText.label: 'Author'
+  @UI.identification: [ {
+    position: 40 ,
+    label: 'Author'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 ,
+    label: 'Author'
+  } ]
+  @UI.selectionField: [ {
+    position: 40
+  } ]
+  Author;
+
+  @EndUserText.label: 'Description'
+  @UI.identification: [ {
+    position: 50 ,
+    label: 'Description'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 ,
+    label: 'Description'
+  } ]
+  @UI.selectionField: [ {
+    position: 50
+  } ]
+  Description;
+
+  @EndUserText.label: 'Genre'
+  @UI.identification: [ {
+    position: 60 ,
+    label: 'Genre'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 ,
+    label: 'Genre'
+  } ]
+  @UI.selectionField: [ {
+    position: 60
+  } ]
+  Genre;
+
+  @EndUserText.label: 'Price'
+  @UI.identification: [ {
+    position: 70 ,
+    label: 'Price'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 ,
+    label: 'Price'
+  } ]
+  @UI.selectionField: [ {
+    position: 70
+  } ]
+  Price;
+
+  @EndUserText.label: 'PublishedDate'
+  @UI.identification: [ {
+    position: 80 ,
+    label: 'PublishedDate'
+  } ]
+  @UI.lineItem: [ {
+    position: 80 ,
+    label: 'PublishedDate'
+  } ]
+  @UI.selectionField: [ {
+    position: 80
+  } ]
+  PublishedDate;
+
+  @EndUserText.label: 'StockQuantity'
+  @UI.identification: [ {
+    position: 90 ,
+    label: 'StockQuantity'
+  } ]
+  @UI.lineItem: [ {
+    position: 90 ,
+    label: 'StockQuantity'
+  } ]
+  @UI.selectionField: [ {
+    position: 90
+  } ]
+  StockQuantity;
+
+  @EndUserText.label: 'Rating'
+
+  @UI.dataPoint: {
+    targetValue: 5,
+    visualization: #RATING,
+    title: 'Rating'
+  }
+
+  @UI.lineItem: [ {
+    position: 60,
+    type: #AS_DATAPOINT,
+    label: 'Rating'
+  } ]
+
+  @UI.identification: [ {
+    position: 100,
+    label: 'Rating'
+  } ]
+
+  @UI.selectionField: [ {
+    position: 100
+  } ]
+
+  Rating;
+
+  @EndUserText.label: 'Status'
+  @UI.identification: [ {
+    position: 110 ,
+    label: 'Status'
+  } ]
+  @UI.lineItem: [ {
+    position: 110 ,
+    label: 'Status'
+  } ]
+  @UI.selectionField: [ {
+    position: 110
+  } ]
+  Status;
+
+  @EndUserText.label: 'Discounted Price'
+  @UI.identification: [ {
+    position: 75,
+    label: 'Discounted Price'
+  } ]
+//  @UI.lineItem: [ {
+//    position: 75,
+//    label: 'Discounted Price'
+//  } ]
+  DiscountedPrice;
+  @EndUserText.label: 'Rating Category'
+  @UI.identification: [ {
+    position: 105,
+    label: 'Rating Category'
+  } ]
+  @UI.lineItem: [ {
+    position: 105,
+    label: 'Rating Category'
+  } ]
+  RatingCategory;
+
+  //  @EndUserText.label: 'Book Recommendations'
+  //  @UI.identification: [
+  //    { position: 115, label: 'Book Recommendations' },
+  //    { type: #FOR_ACTION, dataAction: 'getRecommendations', label: '✨ Get Recommendations', position: 10 }
+  //  ]
+  //  @UI.lineItem: [
+  //    { position: 115, label: 'Book Recommendations' }
+  //  ]
+  //  BookRecommendations;
+  @EndUserText.label: 'AI Book Recommendations'
+  @UI.identification: [ {
+      position: 10,
+      qualifier: 'AIRecommendations',
+      label: 'Recommendations'
+  } ]
+  BookRecommendations;
+
+
+  //  @UI.identification: [ {
+  //    position: 120
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 120
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 120
+  //  } ]
+  //  LocalCreatedBy;
+  //
+  //  @UI.identification: [ {
+  //    position: 130
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 130
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 130
+  //  } ]
+  //  LocalCreatedAt;
+  //
+  //  @UI.identification: [ {
+  //    position: 140
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 140
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 140
+  //  } ]
+  //  LocalLastChangedBy;
+  //
+  //  @UI.identification: [ {
+  //    position: 150
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 150
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 150
+  //  } ]
+  //  LocalLastChangedAt;
+  //
+  //  @UI.identification: [ {
+  //    position: 160
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 160
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 160
+  //  } ]
+  //  LastChangedAt;
+}

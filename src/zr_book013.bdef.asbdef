@@ -1,0 +1,147 @@
+managed implementation in class ZBP_R_BOOK012 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_BOOK013 alias Book
+persistent table zbook013
+extensible
+draft table zbook012_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+{
+  field ( readonly )
+  BookID,
+ DiscountedPrice,
+  UUID,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt,
+  BookRecommendations;
+  field ( numbering : managed )
+  UUID;
+
+  field ( mandatory )
+  Title;
+
+  create;
+  update;
+  delete;
+  determination generateBookID on modify
+  {
+    create;
+  }
+
+  action getRecommendations result [1] $self;
+
+  validation validateTitle on save { create; field Title; }
+
+  determination calculateYearsSincePublished on save
+  { create; field PublishedDate;
+  }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation validateTitle;
+  }
+
+
+  mapping for zbook013 corresponding extensible
+    {
+      UUID                = UUID;
+      BookID              = BOOK_ID;
+      Title               = TITLE;
+      Author              = AUTHOR;
+      Description         = DESCRIPTION;
+      Genre               = GENRE;
+      Currency            = CURRENCY;
+      Price               = PRICE;
+      PublishedDate       = PUBLISHED_DATE;
+      YearsSincePublished = YEARS_SINCE_PUBLISHED;
+      StockQuantity       = STOCK_QUANTITY;
+      QuantityUnit        = QUANTITY_UNIT;
+      Rating              = RATING;
+      Status              = STATUS;
+      BookRecommendations = BOOK_RECOMMENDATIONS;
+      LocalCreatedBy      = LOCAL_CREATED_BY;
+      LocalCreatedAt      = LOCAL_CREATED_AT;
+      LocalLastChangedBy  = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt  = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt       = LAST_CHANGED_AT;
+    }
+
+  association _Author { create; with draft; }
+  association _Inventory { create; with draft; }
+
+}
+
+define behavior for ZR_AUTHOR alias Author
+persistent table zauthor
+extensible
+draft table zauthor_d
+etag dependent by _Book
+lock dependent by _Book
+authorization dependent by _Book
+{
+  field ( readonly )
+  UUID,
+  ParentUUID;
+
+  field ( numbering : managed )
+  UUID;
+
+
+  update;
+  delete;
+
+  mapping for zauthor corresponding extensible
+    {
+      UUID       = UUID;
+      ParentUUID = PARENT_UUID;
+      AuthorID   = AUTHOR_ID;
+      Name       = NAME;
+      Bio        = BIO;
+    }
+
+  association _Book { with draft; }
+
+}
+
+define behavior for ZR_INVENTORY alias Inventory
+persistent table zinventory
+extensible
+draft table zinventory_d
+etag dependent by _Book
+lock dependent by _Book
+authorization dependent by _Book
+{
+  field ( readonly )
+  UUID,
+  ParentUUID;
+
+  field ( numbering : managed )
+  UUID;
+
+
+  update;
+  delete;
+
+  mapping for zinventory corresponding extensible
+    {
+      UUID         = UUID;
+      ParentUUID   = PARENT_UUID;
+      InventoryID  = INVENTORY_ID;
+      Warehouse    = WAREHOUSE;
+      OnHand       = ON_HAND;
+      QuantityUnit = QUANTITY_UNIT;
+    }
+
+  association _Book { with draft; }
+
+}
