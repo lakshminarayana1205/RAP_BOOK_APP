@@ -1151,6 +1151,3 @@ This project is a **personal portfolio application** developed for learning and 
 **Built with ABAP Cloud · RAP · CDS · OData V4 · Fiori Elements**
 
 *Demonstrating enterprise SAP development skills through a complete, end-to-end application*
-
-</div>
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=lakshminarayana1205.RAP_BOOK_APP)
