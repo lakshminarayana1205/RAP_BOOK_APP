@@ -1,5 +1,5 @@
 
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=lakshminarayana1205.RAP_BOOK_APP)
+
 <div align="center">
 
 # 📚 SAP RAP Book Management
@@ -1153,3 +1153,4 @@ This project is a **personal portfolio application** developed for learning and 
 *Demonstrating enterprise SAP development skills through a complete, end-to-end application*
 
 </div>
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=lakshminarayana1205.RAP_BOOK_APP)
